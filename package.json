@@ -1,7 +1,7 @@
 {
     "name": "asm-code-lens",
     "displayName": "ASM Code Lens",
-    "version": "1.8.1",
+    "version": "1.8.4-vchirikov",
     "publisher": "maziac",
     "description": "A language server that enables code lens, references, hover information, symbol renaming and the outline view for assembler files.",
     "author": {
@@ -33,8 +33,10 @@
         "Programming Languages"
     ],
     "activationEvents": [
-        "*"
-    ],
+        "onLanguage:asm",
+        "onWebviewPanel:asm-code-lens.calcview-explorer",
+        "onWebviewPanel:asm-code-lens.calcview-debug"
+      ],
     "main": "./out/src/extension",
     "contributes": {
         "views": {
@@ -174,7 +176,7 @@
         },
         "languages": [
             {
-                "id": "asm-collection",
+                "id": "asm",
                 "extensions": [
                     ".list",
                     ".lis",
@@ -191,7 +193,7 @@
         ],
         "grammars": [
             {
-                "language": "asm-collection",
+                "language": "asm",
                 "scopeName": "source.asm",
                 "path": "./grammar/asm.json"
             }
@@ -221,8 +223,8 @@
         "tslint": "eslint ./**/*.ts",
         "watch": "tsc -w -p ./",
         "test": "mocha -u tdd ./out/tests/",
-        "package": "vsce package",
-        "publish": "vsce publish"
+        "package": "npx vsce package",
+        "publish": "npx vsce publish"
     },
     "dependencies": {
         "assert": "^2.0.0",
@@ -237,6 +239,7 @@
         "@types/node": "^13.13.39",
         "@types/vscode": "^1.52.0",
         "mocha": "^8.2.1",
-        "typescript": "^4.1.3"
+        "typescript": "^4.1.3",
+        "vsce": "^1.96.1"
     }
 }

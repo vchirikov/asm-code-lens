@@ -157,6 +157,29 @@
 					]
 				},
 				{
+					"name": "string.quoted.back.asm",
+					"begin": "`",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.string.begin.asm"
+						}
+					},
+					"end": "([`])|((?:[^\\\\\\n])$)",
+					"endCaptures": {
+						"1": {
+							"name": "punctuation.definition.string.end.asm"
+						},
+						"2": {
+							"name": "invalid.illegal.newline.asm"
+						}
+					},
+					"patterns": [
+						{
+							"include": "#string-character-escape"
+						}
+					]
+				},
+				{
 					"name": "string.quoted.double.asm",
 					"begin": "\"",
 					"beginCaptures": {
